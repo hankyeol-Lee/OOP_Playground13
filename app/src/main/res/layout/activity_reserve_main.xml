@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".reserveMain">
+
+    <ImageView
+        android:id="@+id/Map"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_marginBottom="1dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/reserveTL"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/adresssearch"
+        tools:srcCompat="@drawable/ic_launcher_background" />
+
+    <SearchView
+        android:id="@+id/adresssearch"
+        android:layout_width="412dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="38dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/reserveTL"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/reserveVP"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Map"/>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/reserveVP"
+        android:layout_width="410dp"
+        android:layout_height="330dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reserveTL" />
+</androidx.constraintlayout.widget.ConstraintLayout>
