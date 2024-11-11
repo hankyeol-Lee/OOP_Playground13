@@ -6,9 +6,202 @@
     android:layout_height="match_parent"
     tools:context=".reservePingPongFragment">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="탁구장 Fragment" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/listbutton6"
+            android:layout_width="400dp"
+            android:layout_height="92dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="256dp"
+            android:layout_marginEnd="5dp"
+            android:backgroundTint="#9FE189"
+            android:drawableLeft="@drawable/pingpong1"
+            app:layout_constraintBottom_toTopOf="@+id/listbutton7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/listname6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="98dp"
+            android:layout_marginTop="22dp"
+            android:layout_marginEnd="230dp"
+            android:layout_marginBottom="50dp"
+            android:fontFamily="@font/pretendardblack"
+            android:text="주엽탁구클럽"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/listbutton6"
+            app:layout_constraintEnd_toEndOf="@+id/listbutton6"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/listbutton6"
+            app:layout_constraintTop_toTopOf="@+id/listbutton6"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/listtime6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="98dp"
+            android:layout_marginEnd="183dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/pretendardextralight"
+            android:singleLine="false"
+            android:text="이용시간 10:00 ~ 22:30 \n테이블 수 : 8개"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/listbutton6"
+            app:layout_constraintEnd_toEndOf="@+id/listbutton6"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/listbutton6"
+            app:layout_constraintTop_toBottomOf="@+id/listname6"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="14dp"
+            android:layout_height="15dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="29dp"
+            android:layout_marginEnd="208dp"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/bookmarkfilled"
+            app:layout_constraintBottom_toTopOf="@+id/listtime6"
+            app:layout_constraintEnd_toEndOf="@+id/listbutton6"
+            app:layout_constraintStart_toEndOf="@+id/listname6"
+            app:layout_constraintTop_toTopOf="@+id/listbutton6" />
+
+        <Button
+            android:id="@+id/listbutton7"
+            android:layout_width="400dp"
+            android:layout_height="92dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:backgroundTint="#9FE189"
+            android:drawableLeft="@drawable/pingpong2"
+            app:layout_constraintBottom_toTopOf="@+id/listbutton8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listbutton6" />
+
+        <TextView
+            android:id="@+id/listtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="98dp"
+            android:layout_marginEnd="183dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/pretendardextralight"
+            android:singleLine="false"
+            android:text="이용시간 10:00 ~ 22:00 \n테이블 수 : 10개"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/listbutton7"
+            app:layout_constraintEnd_toEndOf="@+id/listbutton7"
+            app:layout_constraintStart_toStartOf="@+id/listbutton7"
+            app:layout_constraintTop_toBottomOf="@+id/listname" />
+
+        <TextView
+            android:id="@+id/listname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="98dp"
+            android:layout_marginTop="22dp"
+            android:layout_marginEnd="230dp"
+            android:layout_marginBottom="50dp"
+            android:fontFamily="@font/pretendardblack"
+            android:text="호수탁구교실"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/listbutton7"
+            app:layout_constraintEnd_toEndOf="@+id/listbutton7"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/listbutton7"
+            app:layout_constraintTop_toBottomOf="@+id/listbutton6"
+            app:layout_constraintVertical_bias="0.666" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="14dp"
+            android:layout_height="15dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="29dp"
+            android:layout_marginEnd="208dp"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/bookmarkblank"
+            app:layout_constraintBottom_toTopOf="@+id/listtime"
+            app:layout_constraintEnd_toEndOf="@+id/listbutton7"
+            app:layout_constraintStart_toEndOf="@+id/listname"
+            app:layout_constraintTop_toTopOf="@+id/listbutton7" />
+
+        <Button
+            android:id="@+id/listbutton8"
+            android:layout_width="400dp"
+            android:layout_height="92dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginBottom="314dp"
+            android:backgroundTint="#9FE189"
+            android:drawableLeft="@drawable/pingpong3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listbutton7" />
+
+        <TextView
+            android:id="@+id/listtime3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="98dp"
+            android:layout_marginEnd="183dp"
+            android:layout_marginBottom="21dp"
+            android:fontFamily="@font/pretendardextralight"
+            android:singleLine="false"
+            android:text="이용시간 10:00 ~ 23:00 \n테이블 수 : 6개"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/listbutton8"
+            app:layout_constraintEnd_toEndOf="@+id/listbutton8"
+            app:layout_constraintStart_toStartOf="@+id/listbutton8"
+            app:layout_constraintTop_toBottomOf="@+id/listname3" />
+
+        <TextView
+            android:id="@+id/listname3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="98dp"
+            android:layout_marginTop="21dp"
+            android:layout_marginEnd="206dp"
+            android:layout_marginBottom="51dp"
+            android:fontFamily="@font/pretendardblack"
+            android:text="일산시온탁구클럽"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/listbutton8"
+            app:layout_constraintEnd_toEndOf="@+id/listbutton8"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/listbutton8"
+            app:layout_constraintTop_toTopOf="@+id/listbutton8"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="14dp"
+            android:layout_height="15dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="29dp"
+            android:layout_marginEnd="183dp"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/bookmarkblank"
+            app:layout_constraintBottom_toTopOf="@+id/listtime3"
+            app:layout_constraintEnd_toEndOf="@+id/listbutton8"
+            app:layout_constraintStart_toEndOf="@+id/listname3"
+            app:layout_constraintTop_toTopOf="@+id/listbutton8" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

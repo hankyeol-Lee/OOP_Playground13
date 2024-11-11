@@ -7,17 +7,14 @@
     android:layout_height="match_parent"
     tools:context=".reserveMain">
 
-    <ImageView
-        android:id="@+id/Map"
-        android:layout_width="400dp"
-        android:layout_height="400dp"
-        android:layout_marginBottom="1dp"
-        android:scaleType="centerCrop"
+    <com.naver.maps.map.MapView
+        android:id="@+id/navermap"
+        android:layout_width="410dp"
+        android:layout_height="387dp"
         app:layout_constraintBottom_toTopOf="@+id/reserveTL"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adresssearch"
-        tools:srcCompat="@drawable/ic_launcher_background" />
+        app:layout_constraintTop_toBottomOf="@+id/adresssearch" />
 
     <SearchView
         android:id="@+id/adresssearch"
@@ -34,14 +31,12 @@
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toTopOf="@+id/reserveVP"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Map"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/reserveVP"
@@ -49,6 +44,23 @@
         android:layout_height="330dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </androidx.viewpager2.widget.ViewPager2>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="180dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/pretendardextrabold"
+        android:text="예약하기"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/adresssearch"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reserveTL" />
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
