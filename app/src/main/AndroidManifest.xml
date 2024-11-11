@@ -13,6 +13,12 @@
         android:theme="@style/Theme.Oop_project"
         tools:targetApi="31">
         <activity
+            android:name=".reserveDetail"
+            android:exported="false" />
+        <activity
+            android:name=".reserveMain"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
@@ -24,6 +30,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.naver.maps.map.CLIENT_ID"
+            android:value="od9rod45zr" />
     </application>
 
 </manifest>
