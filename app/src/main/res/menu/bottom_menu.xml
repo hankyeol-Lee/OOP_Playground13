@@ -11,10 +11,6 @@
         android:title="community"
         android:icon="@drawable/menu_community"/>
     <item
-        android:id="@+id/fragment_shop"
-        android:title="shop"
-        android:icon="@drawable/menu_shop"/>
-    <item
         android:id="@+id/fragment_profile"
         android:title="profile"
         android:icon="@drawable/menu_profile"/>

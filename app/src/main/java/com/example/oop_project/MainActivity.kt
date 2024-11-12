@@ -52,12 +52,7 @@ class MainActivity : AppCompatActivity() {
                         .commitAllowingStateLoss()
                     return@setOnItemSelectedListener true
                 }
-                R.id.fragment_shop -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.main_frame, ShopFragment())
-                        .commitAllowingStateLoss()
-                    return@setOnItemSelectedListener true
-                }
+
                 R.id.fragment_profile -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.main_frame, ProfileFragment())

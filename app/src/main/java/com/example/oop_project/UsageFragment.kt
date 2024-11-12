@@ -5,18 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.oop_project.databinding.FragmentShopBinding
+import com.example.oop_project.databinding.FragmentProfileBinding
+import com.example.oop_project.databinding.FragmentUsageBinding
 
-class ShopFragment : Fragment() {
+class UsageFragment : Fragment() {
 
-    lateinit var binding: FragmentShopBinding
+    lateinit var binding: FragmentUsageBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentShopBinding.inflate(inflater, container, false)
+        binding = FragmentUsageBinding.inflate(inflater, container, false)
 
         return binding.root
     }
