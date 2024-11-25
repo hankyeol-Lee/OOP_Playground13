@@ -9,6 +9,7 @@ import com.example.oop_project.databinding.ListPostsBinding
 
 
 
+
 class Community_PostAdapter(
     val Postdata : Array<Community_Post>,
     private val listener: OnPostClickListener // 인터페이스를 생성자로 받아와서 안에 있는 메소드 사용가능
@@ -41,9 +42,3 @@ class Community_PostAdapter(
     }
 }
 
-class OnPostClickListener {
-    fun onPostClick(communityPost: Community_Post) {
-        TODO("Not yet implemented")
-    }
-
-}

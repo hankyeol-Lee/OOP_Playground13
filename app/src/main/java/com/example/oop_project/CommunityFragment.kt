@@ -11,7 +11,6 @@ import com.example.oop_project.databinding.FragmentCommunityBinding
 
 import android.util.Log // 디버깅용 log 라이브러리 임시 추가
 
-
 interface OnPostClickListener {
     fun onPostClick(post:Community_Post) // 클릭 이벤트를 분리하기 위한 인터페이스 지정.
 }
@@ -51,7 +50,7 @@ class CommunityFragment : Fragment(), OnPostClickListener {
             // 내용 전달 코드
         }
         postFragment.arguments = bundle // fragment에 데이터 넘겨줌.
-        Log.d("arguments","${bundle}")
+        //Log.d("arguments","${bundle}")
         parentFragmentManager.beginTransaction() // fragment 전환
             .replace(R.id.fragment_postfragment, postFragment)
             .addToBackStack(null)
