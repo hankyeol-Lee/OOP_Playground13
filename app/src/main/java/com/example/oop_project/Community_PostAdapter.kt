@@ -40,3 +40,10 @@ class Community_PostAdapter(
         }
     }
 }
+
+class OnPostClickListener {
+    fun onPostClick(communityPost: Community_Post) {
+        TODO("Not yet implemented")
+    }
+
+}

@@ -11,7 +11,6 @@
         android:id="@+id/navermap"
         android:layout_width="410dp"
         android:layout_height="387dp"
-        app:layout_constraintBottom_toTopOf="@+id/reserveTL"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/adresssearch" />
@@ -25,28 +24,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/reserveTL"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
-        app:layout_constraintBottom_toTopOf="@+id/reserveVP"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/reserveVP"
-        android:layout_width="410dp"
-        android:layout_height="330dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-    </androidx.viewpager2.widget.ViewPager2>
 
     <TextView
         android:id="@+id/textView"
@@ -63,4 +40,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:layout_width="409dp"
+        android:layout_height="384dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="461dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

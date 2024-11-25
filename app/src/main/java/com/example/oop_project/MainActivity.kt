@@ -65,3 +65,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
+
+class CommunityFragment : Fragment() {
+
+}
