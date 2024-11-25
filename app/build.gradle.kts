@@ -1,7 +1,11 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+<<<<<<< Updated upstream
     id("com.google.gms.google-services")
+=======
+    alias(libs.plugins.google.gms.google.services)
+>>>>>>> Stashed changes
 }
 
 android {
@@ -51,6 +55,7 @@ dependencies {
     implementation(libs.play.services.maps)
     implementation("com.naver.maps:map-sdk:3.19.1")
     implementation(libs.androidx.legacy.support.v4)
+    implementation(libs.firebase.database)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
