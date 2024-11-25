@@ -5,11 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.oop_project.databinding.FragmentCommunityBinding
 import com.example.oop_project.databinding.FragmentPostfragmentBinding
 
 
-class Postfragment : Fragment() {
+class PostFragment : Fragment() {
 
     lateinit var binding:FragmentPostfragmentBinding //binding 선언
     override fun onCreateView(

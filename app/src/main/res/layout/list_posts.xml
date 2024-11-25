@@ -16,7 +16,8 @@
             android:layout_height="match_parent"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="22dp"
-            android:text="[KBO]"
+            android:fontFamily="@font/nexonlv2_gothic_bold"
+            android:text="[[KBO]]"
             android:textColor="#0D2295"
             android:textSize="16sp" />
 
@@ -28,7 +29,8 @@
             android:layout_marginBottom="1dp"
             android:maxLines="1"
             android:text="KIA 우승 기여한 불펜 투수 장현식… 52억원에 LG로 "
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            tools:fontFamily="@font/pretendardblack" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

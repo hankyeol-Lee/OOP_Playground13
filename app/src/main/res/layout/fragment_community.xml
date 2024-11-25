@@ -2,6 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_postfragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CommunityFragment">
@@ -24,9 +25,9 @@
             android:layout_height="56dp"
             android:src="@drawable/commu_greenbar" />
 
-        <androidx.core.widget.NestedScrollView
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="1535dp">
+            android:layout_height="1051dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -69,7 +70,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recForumKBO"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="120dp"
                     android:orientation="horizontal" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -107,7 +108,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recForumLCK"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="114dp">
 
                 </androidx.recyclerview.widget.RecyclerView>
 
@@ -147,10 +148,10 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recForumEPL"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="118dp" />
 
             </LinearLayout>
-        </androidx.core.widget.NestedScrollView>
+        </ScrollView>
     </LinearLayout>
 
 </FrameLayout>

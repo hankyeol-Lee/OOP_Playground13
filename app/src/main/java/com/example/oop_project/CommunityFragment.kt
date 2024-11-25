@@ -9,7 +9,11 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.oop_project.databinding.FragmentCommunityBinding
 
-class CommunityFragment : Fragment() {
+interface OnPostClickListener {
+    fun onPostClick(post:Community_Post) // 클릭 이벤트를 분리하기 위한 인터페이스 지정.
+}
+
+class CommunityFragment : Fragment(), OnPostClickListener {
 
     val PostKBO = arrayOf(
         Community_Post("KBO","KIA 우승 기여한 불펜 투수 장현식… 52억원에 LG로"),
@@ -19,26 +23,6 @@ class CommunityFragment : Fragment() {
         Community_Post("KBO","개인적으로 써보는 2024 기아 타이거즈 정규시즌 마무리 후기"),
     )
     val PostLCK = arrayOf(
-        Community_Post("DK","감코진 방출..디플러스 기아의 미래는?"),
-        Community_Post("T1","페이커는 진짜 괴물이다"),
-        Community_Post("DK","[오피셜] 디플러스 기아, 서포터' 모함' 정재훈과 계약 종료"),
-        Community_Post("GEN","미리 보는 젠지 로스터.jpg"),
-        Community_Post("KT","그래서 룰러 킅 옴? 진짜모름"),
-        Community_Post("DK","감코진 방출..디플러스 기아의 미래는?"),
-        Community_Post("T1","페이커는 진짜 괴물이다"),
-        Community_Post("DK","[오피셜] 디플러스 기아, 서포터' 모함' 정재훈과 계약 종료"),
-        Community_Post("GEN","미리 보는 젠지 로스터.jpg"),
-        Community_Post("KT","그래서 룰러 킅 옴? 진짜모름"),
-        Community_Post("DK","감코진 방출..디플러스 기아의 미래는?"),
-        Community_Post("T1","페이커는 진짜 괴물이다"),
-        Community_Post("DK","[오피셜] 디플러스 기아, 서포터' 모함' 정재훈과 계약 종료"),
-        Community_Post("GEN","미리 보는 젠지 로스터.jpg"),
-        Community_Post("KT","그래서 룰러 킅 옴? 진짜모름"),
-        Community_Post("DK","감코진 방출..디플러스 기아의 미래는?"),
-        Community_Post("T1","페이커는 진짜 괴물이다"),
-        Community_Post("DK","[오피셜] 디플러스 기아, 서포터' 모함' 정재훈과 계약 종료"),
-        Community_Post("GEN","미리 보는 젠지 로스터.jpg"),
-        Community_Post("KT","그래서 룰러 킅 옴? 진짜모름"),
         Community_Post("DK","감코진 방출..디플러스 기아의 미래는?"),
         Community_Post("T1","페이커는 진짜 괴물이다"),
         Community_Post("DK","[오피셜] 디플러스 기아, 서포터' 모함' 정재훈과 계약 종료"),
@@ -54,6 +38,15 @@ class CommunityFragment : Fragment() {
         )
     lateinit var binding: FragmentCommunityBinding
 
+    override fun onPostClick(post: Community_Post) {
+        // 인터페이스의 추상 메소드 구체화.
+        val postFragment = PostFragment()
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment_postfragment, postFragment)
+            .addToBackStack(null)
+            .commit()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -68,19 +61,17 @@ class CommunityFragment : Fragment() {
         binding.recForumLCK.addItemDecoration(itemDecoration)
         binding.recForumEPL.addItemDecoration(itemDecoration)
 
-
         // reForumKBO recycler에 adapter 연결
         binding.recForumKBO.layoutManager = LinearLayoutManager(requireContext())
-        binding.recForumKBO.adapter = Community_PostAdapter(PostKBO)
+        binding.recForumKBO.adapter = Community_PostAdapter(PostKBO,this)
 
         // reForumLCK recycler에 adapter 연결.
         binding.recForumLCK.layoutManager = LinearLayoutManager(requireContext())
-        binding.recForumLCK.adapter = Community_PostAdapter(PostLCK)
+        binding.recForumLCK.adapter = Community_PostAdapter(PostLCK,this)
 
         //reForumEPL recycler에 adapter 연결.
         binding.recForumEPL.layoutManager = LinearLayoutManager(requireContext())
-        binding.recForumEPL.adapter = Community_PostAdapter(PostEPL)
-
+        binding.recForumEPL.adapter = Community_PostAdapter(PostEPL,this)
 
         return binding.root
     }
