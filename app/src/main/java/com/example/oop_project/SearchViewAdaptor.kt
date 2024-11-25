@@ -11,16 +11,11 @@ class SearchViewAdaptor : BaseAdapter() {
 
     override fun getCount(): Int = mItems.count()
 
-
-
     override fun getItem(position: Int): SearchViewItem = mItems[position]
 
 
     override fun getItemId(position: Int): Long = 0L
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        TODO("Not yet implemented")
-    }
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val context = parent.context
         val view = convertView ?: LayoutInflater.from(context).inflate(R.layout.listview_custom, parent, false)

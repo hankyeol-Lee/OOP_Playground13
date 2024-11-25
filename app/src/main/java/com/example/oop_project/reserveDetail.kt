@@ -32,6 +32,9 @@ class reserveDetail : AppCompatActivity() {
         binding = ActivityReserveDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.Title.text = intent.getStringExtra("title")
+        binding.Address.text = intent.getStringExtra("address")
+
         binding.datepicker.setOnClickListener {
             val datePickerDialog = DatePickerDialog(
                 this,

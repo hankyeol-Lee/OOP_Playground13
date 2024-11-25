@@ -1,5 +1,6 @@
 package com.example.oop_project
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Html
 import android.util.Log
@@ -24,9 +25,10 @@ import java.net.URLEncoder
 class reserveMain : AppCompatActivity() {
     private lateinit var binding: ActivityReserveMainBinding
 
-    private lateinit var placetitle: Array<String>
-    private lateinit var placeaddress: Array<String>
-    private lateinit var placecategory: Array<String>
+    private var placetitle: Array<String> = Array(5) { "" }
+    private var placeaddress: Array<String> = Array(5) { "" }
+    private var placecategory: Array<String> = Array(5) { "" }
+
     private lateinit var mListView: ListView
 
     private var itemCount: Int = 0
@@ -45,8 +47,17 @@ class reserveMain : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        searchNaver("행신 탁구장")
-
+        searchNaver("행신 골프장")
+        mListView = findViewById(R.id.SearchListView)
+        mListView.setOnItemClickListener { _, _, position, _ ->
+            val title = SearchViewAdaptor.getItem(position).placeTitle
+            val address = SearchViewAdaptor.getItem(position).placeAddress
+            val intent = Intent(applicationContext, reserveDetail::class.java).apply {
+                putExtra("title", title)
+                putExtra("address", address)
+            }
+            startActivity(intent)
+        }
     }
     private fun searchNaver(searchWord : String)
     {
@@ -80,8 +91,9 @@ class reserveMain : AppCompatActivity() {
 
                 val data = searchResult.toString()
                 val array = data.split("\"")
-                var itemCount = 0
+                itemCount = 0
                 for (i in array.indices) {
+                    if (itemCount >= placetitle.size) break
                     when (array[i]) {
                         "title" -> placetitle[itemCount] = array[i + 2]
                         "roadAddress" -> placeaddress[itemCount] = array[i + 2]
@@ -91,6 +103,7 @@ class reserveMain : AppCompatActivity() {
                         }
                     }
                 }
+
 
                 // 결과를 UI Thread에서 listView에 데이터 추가
                 runOnUiThread {
