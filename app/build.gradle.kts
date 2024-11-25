@@ -1,11 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-<<<<<<< Updated upstream
     id("com.google.gms.google-services")
-=======
-    alias(libs.plugins.google.gms.google.services)
->>>>>>> Stashed changes
 }
 
 android {
