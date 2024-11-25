@@ -29,7 +29,7 @@
         android:layout_marginBottom="47dp"
         android:ems="10"
         android:inputType="date"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/reserveBtn"
         app:layout_constraintEnd_toStartOf="@+id/timePicker1"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +43,7 @@
         android:layout_marginBottom="44dp"
         android:ems="10"
         android:inputType="date"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/reserveBtn"
         app:layout_constraintEnd_toStartOf="@+id/timePicker2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/timePicker1"
@@ -55,7 +55,7 @@
         android:layout_height="30dp"
         android:layout_marginTop="46dp"
         android:layout_marginBottom="54dp"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/reserveBtn"
         app:layout_constraintEnd_toStartOf="@+id/timeto"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/timefrom"
@@ -194,7 +194,7 @@
         app:srcCompat="@drawable/calendar" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/reserveBtn"
         android:layout_width="237dp"
         android:layout_height="53dp"
         android:layout_marginStart="87dp"

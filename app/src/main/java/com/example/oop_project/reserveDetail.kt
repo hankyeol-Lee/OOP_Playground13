@@ -11,6 +11,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.oop_project.databinding.ActivityReserveDetailBinding
 import com.example.oop_project.databinding.ActivityReserveMainBinding
+import com.google.firebase.database.FirebaseDatabase
 
 class reserveDetail : AppCompatActivity() {
     private var calendar = Calendar.getInstance()
@@ -29,11 +30,14 @@ class reserveDetail : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+
         binding = ActivityReserveDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.Title.text = intent.getStringExtra("title")
         binding.Address.text = intent.getStringExtra("address")
+
 
         binding.datepicker.setOnClickListener {
             val datePickerDialog = DatePickerDialog(
@@ -46,6 +50,10 @@ class reserveDetail : AppCompatActivity() {
                 year, month, day
             )
             datePickerDialog.show()
+        }
+
+        binding.reserveBtn.setOnClickListener{
+            sendReserveData()
         }
         binding.timePicker1.setOnClickListener {
             showTimePickerDialog(binding.timefrom)
@@ -67,4 +75,32 @@ class reserveDetail : AppCompatActivity() {
         )
         timePickerDialog.show()
     }
+
+    private fun sendReserveData(){
+        val database = FirebaseDatabase.getInstance()
+        val reference = database.getReference("reservations")
+
+        val place = binding.Title.text.toString()
+        val date = binding.reserveDatetext.text.toString()
+        val startTime = binding.timefrom.text.toString()
+        val endTime = binding.timeto.text.toString()
+
+        // 입력값 유효성 검사
+        if (date.isNotEmpty() && startTime.isNotEmpty() && endTime.isNotEmpty()) {
+            // 데이터 저장
+            val reservationId = reference.push().key // 고유 ID 생성
+            val reservation = Reservation(place, date, startTime, endTime)
+            reservationId?.let {
+                reference.child(it).setValue(reservation)
+            }
+        }
+    }
+    data class Reservation(
+        val place : String = "",
+        val date : String = "",
+        val startTime : String = "",
+        val endTime : String = ""
+    )
 }
+
+
