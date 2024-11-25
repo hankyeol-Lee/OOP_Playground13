@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.oop_project.databinding.FragmentCommunityBinding
 
 import android.util.Log // 디버깅용 log 라이브러리 임시 추가
+import androidx.lifecycle.ViewModelProvider
 
 interface OnPostClickListener {
     fun onPostClick(post:Community_Post) // 클릭 이벤트를 분리하기 위한 인터페이스 지정.
@@ -38,7 +39,10 @@ class CommunityFragment : Fragment(), OnPostClickListener {
         Community_Post("GEN","미리 보는 젠지 로스터.jpg"),
         Community_Post("KT","그래서 룰러 킅 옴? 진짜모름"),
         )
-    lateinit var binding: FragmentCommunityBinding
+
+
+
+
 
     override fun onPostClick(post: Community_Post) {
         // 인터페이스의 추상 메소드 구체화.
@@ -57,14 +61,33 @@ class CommunityFragment : Fragment(), OnPostClickListener {
             .commit()
     }
 
+
+    lateinit var viewModel: CommunityPostViewModel // ViewModel을 구현하기 위해 설정
+    lateinit var binding: FragmentCommunityBinding
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentCommunityBinding.inflate(inflater, container, false)
+        viewModel = ViewModelProvider(this).get(CommunityPostViewModel::class.java)
 
-        
+        //예시 데이터 하나.글 하나 씀.
+        val newPost = Post(
+            category = "KBO", // 카테고리
+            title = "삼성은 어떻게 강팀이 되었는가",
+            author = "야빠어디가",
+            content = "ㅈㄱㄴ",
+            image = "https://www.instagram.com/samsunglions_baseballclub/p/DBTFl4MvBlf/",
+            likes = 0,
+            dislikes = 0,
+            comment = emptyMap()
+        )
+
+        viewModel.addPost(newPost) // viewModel에게 data 저장하라고 함
+
+
         //ItemDecoration을 이용한 item 별 밑줄
         val itemDecoration = DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
         binding.recForumKBO.addItemDecoration(itemDecoration)
