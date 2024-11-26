@@ -6,12 +6,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.oop_project.databinding.ListPostsBinding
-
-
-
+import okhttp3.internal.notify
 
 class Community_PostAdapter(
-    val Postdata : Array<Community_Post>,
+    var Postdata : Array<Community_Post>,
     private val listener: OnPostClickListener // 인터페이스를 생성자로 받아와서 안에 있는 메소드 사용가능
 ) : RecyclerView.Adapter<Community_PostAdapter.Holder>() { // 어떤 data를 바탕으로 만들 것인가를 알아야 함. 그래서 data 모델을 넘겨줘야 함
 
@@ -26,6 +24,12 @@ class Community_PostAdapter(
     { // 렌더링 함수
         holder.bind(Postdata[position]) // 배열 보여주기.
     }
+
+    fun updateData(newData:List<Community_Post>) {
+        Postdata = newData.toTypedArray()
+        notifyDataSetChanged() // 별로 인거 같아 비효율적인거같음
+    }
+
 
     class Holder(
         private val binding : ListPostsBinding,

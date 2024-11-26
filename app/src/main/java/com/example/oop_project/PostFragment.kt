@@ -19,8 +19,15 @@ class PostFragment : Fragment() {
         binding = FragmentPostfragmentBinding.inflate(inflater, container, false)
 
         val title = arguments?.getString("postTitle")?: "기본 제목" // nullcheck
+        val content = arguments?.getString("postData")?: "기본 내용" // nullcheck
+        val image = arguments?.getString("postImage")?: "https://ko.dossierkfilm.be/this-4k-rick-astley-remastering-allows-you-rickroll-your-friends-with-terrifying-visual-sharpness"
+        //val likes
+        // val dislikes : 구가해야하는것들
+
         binding.postTitle.text = title // postTitle id textView에 읽어온 값 지정
-        
+        binding.postData.text = content
+
+
         return binding.root
     }
 }
