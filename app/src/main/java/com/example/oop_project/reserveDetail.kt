@@ -5,6 +5,7 @@ import android.app.TimePickerDialog
 import android.icu.util.Calendar
 import android.os.Bundle
 import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -55,13 +56,6 @@ class reserveDetail : AppCompatActivity() {
         binding.reserveBtn.setOnClickListener{
             sendReserveData()
         }
-        binding.timePicker1.setOnClickListener {
-            showTimePickerDialog(binding.timefrom)
-        }
-
-        binding.timePicker2.setOnClickListener {
-            showTimePickerDialog(binding.timeto)
-        }
 
     }
     private fun showTimePickerDialog(targetEditText: EditText){
@@ -82,8 +76,8 @@ class reserveDetail : AppCompatActivity() {
 
         val place = binding.Title.text.toString()
         val date = binding.reserveDatetext.text.toString()
-        val startTime = binding.timefrom.text.toString()
-        val endTime = binding.timeto.text.toString()
+        val startTime = binding.startTime.selectedItem.toString()
+        val endTime = binding.endTime.selectedItem.toString()
 
         // 입력값 유효성 검사
         if (date.isNotEmpty() && startTime.isNotEmpty() && endTime.isNotEmpty()) {
@@ -93,8 +87,14 @@ class reserveDetail : AppCompatActivity() {
             reservationId?.let {
                 reference.child(it).setValue(reservation)
             }
+            Toast.makeText(this, "예약이 완료되었습니다.", Toast.LENGTH_SHORT).show()
+        }
+        else
+        {
+            Toast.makeText(this, "예약정보가 유효하지 않습니다. 입력한 정보를 확인하세요.", Toast.LENGTH_SHORT).show()
         }
     }
+
     data class Reservation(
         val place : String = "",
         val date : String = "",
@@ -102,5 +102,3 @@ class reserveDetail : AppCompatActivity() {
         val endTime : String = ""
     )
 }
-
-

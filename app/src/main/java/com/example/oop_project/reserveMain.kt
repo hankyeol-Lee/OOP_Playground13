@@ -10,12 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.oop_project.databinding.ActivityReserveMainBinding
-import com.google.android.material.tabs.TabLayoutMediator
-import com.naver.maps.geometry.LatLng;
-import com.naver.maps.map.CameraPosition;
-import com.naver.maps.map.MapView;
-import com.naver.maps.map.NaverMap;
-import com.naver.maps.map.OnMapReadyCallback;
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.HttpURLConnection
