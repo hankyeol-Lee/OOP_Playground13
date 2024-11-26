@@ -13,6 +13,7 @@ class CommunityPostViewModel :ViewModel() {
     private val _posts = MutableLiveData<List<Post>>() //내부 livedata
     val posts : LiveData<List<Post>> get() = _posts
 
+
     val newPost = listOf(
         Post(
             category = "KBO", // 카테고리
@@ -42,7 +43,9 @@ class CommunityPostViewModel :ViewModel() {
             likes = 15,
             dislikes = 2
         )
+        // 이런 형식의 Post를 realtime DB에 추가하고, 거기 자체에서 수정해서 글을 만들었음.
     )
+    //글쓰기 기능 확장을 위한, 그리고 json 형태 추가를 위한 addPost 정의.
     fun addPost() {
         newPost.forEach { post->
             repository.addPost(post)

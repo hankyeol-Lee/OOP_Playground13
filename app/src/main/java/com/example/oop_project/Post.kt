@@ -10,10 +10,10 @@ data class Post(
     val image: String? = null,
     val likes: Int = 0,
     val dislikes: Int = 0,
-    val comment: Map<String,Comment> = emptyMap()
+    val comment: Map<String,Comment> = emptyMap() // K, V가 있는 map으로 댓글 정의
 )
 
-data class Comment(
+data class Comment( // 확장 가능하도록 댓글 기능 추가..?
     val author :String = "",
     val content:String = "",
     val timePassed : Long = 0L

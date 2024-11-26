@@ -205,11 +205,11 @@
                         android:id="@+id/commuTypeNBA"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
-                        android:layout_marginEnd="2641dp"
+                        android:layout_marginEnd="264dp"
                         android:layout_marginBottom="7dp"
-                        android:text="TextView"
-                        app:layout_constraintBottom_toTopOf="@+id/commuTypeStar5"
+                        android:text="NBA 인기글"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
