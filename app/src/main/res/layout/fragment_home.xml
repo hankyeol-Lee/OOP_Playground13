@@ -18,25 +18,44 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
-            <ImageView
-                android:id="@+id/home_game_result"
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/home_recent_game_rv"
                 android:layout_width="390dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:src="@drawable/home_game_result"
+                android:layout_height="match_parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/home_popular_post" />
+                app:layout_constraintTop_toBottomOf="@+id/home_popular_post"
+
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="horizontal"
+
+                tools:listitem="@layout/recent_game_item"/>
 
             <ImageView
                 android:id="@+id/home_popular_post"
                 android:layout_width="390dp"
                 android:layout_height="206dp"
                 android:layout_marginTop="16dp"
-                android:src="@drawable/home_popular_post"
+                android:src="@drawable/home_popular_post_background"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/home_reservation" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/home_popular_post_rv"
+                android:layout_width="350dp"
+                android:layout_height="130dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/home_popular_post"
+                app:layout_constraintEnd_toEndOf="@+id/home_popular_post"
+                app:layout_constraintStart_toStartOf="@+id/home_popular_post"
+
+                app:layout_constraintTop_toTopOf="@+id/home_popular_post"
+                tools:listitem="@layout/popular_post_item" />
 
             <ImageView
                 android:id="@+id/home_reservation"
