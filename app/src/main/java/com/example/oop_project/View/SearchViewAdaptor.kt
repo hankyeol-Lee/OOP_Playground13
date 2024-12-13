@@ -1,10 +1,12 @@
-package com.example.oop_project
+package com.example.oop_project.View
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import com.example.oop_project.Model.SearchViewItem
+import com.example.oop_project.R
 
 class SearchViewAdaptor : BaseAdapter() {
     private val mItems = ArrayList<SearchViewItem>()
@@ -23,12 +25,13 @@ class SearchViewAdaptor : BaseAdapter() {
         val placetitle: TextView = view.findViewById(R.id.Place_Title)
         val placeaddress: TextView = view.findViewById(R.id.Place_Adress)
         val placecategory: TextView = view.findViewById(R.id.place_category)
-        val searchViewItem : SearchViewItem = getItem(position)
 
-        placetitle.text = searchViewItem.placeTitle
-        placeaddress.text = searchViewItem.placeAddress
-        placecategory.text = searchViewItem.placeCategory
+        val searchViewItem: SearchViewItem = getItem(position)
 
+        // 데이터 바인딩
+        placetitle.text = removeHtmlTags(searchViewItem.placeTitle)
+        placeaddress.text = removeHtmlTags(searchViewItem.placeAddress)
+        placecategory.text = removeHtmlTags(searchViewItem.placeCategory)
 
         return view
     }
@@ -41,4 +44,13 @@ class SearchViewAdaptor : BaseAdapter() {
         }
         mItems.add(mItem)
     }
+    fun clear() {
+        mItems.clear()
+        notifyDataSetChanged()
+    }
+    fun removeHtmlTags(input: String): String {
+        return input.replace(Regex("<[^>]*>"), "") // HTML 태그 제거
+    }
+
+
 }
