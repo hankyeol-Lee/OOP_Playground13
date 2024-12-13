@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".reserveDetail">
+    tools:context=".View.reserveDetail">
 
     <ImageView
         android:id="@+id/imageView"
@@ -20,60 +20,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <EditText
-        android:id="@+id/timefrom"
-        android:layout_width="136dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="47dp"
-        android:ems="10"
-        android:inputType="date"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
-        app:layout_constraintEnd_toStartOf="@+id/timePicker1"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-    <EditText
-        android:id="@+id/timeto"
-        android:layout_width="136dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="39dp"
-        android:layout_marginBottom="44dp"
-        android:ems="10"
-        android:inputType="date"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
-        app:layout_constraintEnd_toStartOf="@+id/timePicker2"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/timePicker1"
-        app:layout_constraintTop_toBottomOf="@+id/reserveDatetext" />
-
-    <ImageView
-        android:id="@+id/timePicker1"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="46dp"
-        android:layout_marginBottom="54dp"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
-        app:layout_constraintEnd_toStartOf="@+id/timeto"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/timefrom"
-        app:layout_constraintTop_toBottomOf="@+id/reserveDatetext"
-        app:srcCompat="@drawable/clock" />
-
-    <ImageView
-        android:id="@+id/timePicker2"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="122dp"
-        android:layout_marginBottom="155dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/timeto"
-        app:layout_constraintTop_toBottomOf="@+id/view2"
-        app:srcCompat="@drawable/clock" />
 
     <TextView
         android:id="@+id/Title"
@@ -155,12 +101,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="6dp"
-        android:layout_marginEnd="90dp"
         android:fontFamily="@font/pretendardmedium"
         android:text="시작시간 / 종료시간"
-        app:layout_constraintBottom_toTopOf="@+id/timefrom"
-        app:layout_constraintEnd_toStartOf="@+id/timeto"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/reserveDatetext" />
 
@@ -186,15 +128,13 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="38dp"
         android:layout_marginEnd="148dp"
-        android:layout_marginBottom="52dp"
-        app:layout_constraintBottom_toTopOf="@+id/timeto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/reserveDatetext"
         app:layout_constraintTop_toBottomOf="@+id/view2"
         app:srcCompat="@drawable/calendar" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/reserveBtn"
         android:layout_width="237dp"
         android:layout_height="53dp"
         android:layout_marginStart="87dp"
@@ -223,5 +163,33 @@
         app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/startTime"
+        android:layout_width="183dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="27dp"
+        android:entries="@array/시간"
+        app:layout_constraintBottom_toTopOf="@+id/reserveBtn"
+        app:layout_constraintEnd_toStartOf="@+id/endTime"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <Spinner
+        android:id="@+id/endTime"
+        android:layout_width="183dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="51dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="27dp"
+        android:entries="@array/시간"
+        app:layout_constraintBottom_toTopOf="@+id/reserveBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/startTime"
+        app:layout_constraintTop_toBottomOf="@+id/datepicker" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

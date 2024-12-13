@@ -52,6 +52,7 @@ dependencies {
     implementation("com.naver.maps:map-sdk:3.19.1")
     implementation(libs.androidx.legacy.support.v4)
     implementation(libs.firebase.database)
+    implementation(libs.firebase.database.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
