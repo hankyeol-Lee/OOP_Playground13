@@ -41,7 +41,7 @@ class reserveMain : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        searchNaver("행신 골프장")
+        searchNaver("구미 볼링장")
         mListView = findViewById(R.id.SearchListView)
         mListView.setOnItemClickListener { _, _, position, _ ->
             val title = SearchViewAdaptor.getItem(position).placeTitle
