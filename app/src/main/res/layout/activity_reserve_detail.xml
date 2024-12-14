@@ -5,14 +5,13 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.reserveDetail">
+    tools:context=".View.ReserveDetailActivity">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="411dp"
         android:layout_height="381dp"
         android:layout_marginTop="14dp"
-        android:layout_marginBottom="3dp"
         android:scaleType="centerCrop"
         android:src="@drawable/pingpongimage"
         app:layout_constraintBottom_toTopOf="@+id/view"
@@ -29,7 +28,7 @@
         android:layout_marginTop="13dp"
         android:layout_marginEnd="270dp"
         android:fontFamily="@font/pretendardblack"
-        android:text="주엽탁구클럽"
+        android:text="시설 이름"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/Address"
@@ -40,13 +39,13 @@
 
     <TextView
         android:id="@+id/Address"
-        android:layout_width="375dp"
-        android:layout_height="54dp"
+        android:layout_width="373dp"
+        android:layout_height="22dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="6dp"
         android:fontFamily="@font/pretendardsemibold"
-        android:text="경기 고양시 일산서구 중앙로 1391 상가동 5층20호21호\n주엽동 83\n10366"
+        android:text="시설 주소"
         app:layout_constraintBottom_toTopOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -80,6 +79,18 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="12dp"
+        android:background="@color/material_dynamic_neutral40"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <TextView
         android:id="@+id/textView5"
@@ -176,7 +187,8 @@
         app:layout_constraintBottom_toTopOf="@+id/reserveBtn"
         app:layout_constraintEnd_toStartOf="@+id/endTime"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Spinner
         android:id="@+id/endTime"
@@ -190,6 +202,7 @@
         app:layout_constraintBottom_toTopOf="@+id/reserveBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/startTime"
-        app:layout_constraintTop_toBottomOf="@+id/datepicker" />
+        app:layout_constraintTop_toBottomOf="@+id/datepicker"
+        app:layout_constraintVertical_bias="0.027" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

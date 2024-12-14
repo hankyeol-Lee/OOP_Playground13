@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.reserveMain">
+    tools:context=".View.ReserveMainActivity">
 
     <com.naver.maps.map.MapView
         android:id="@+id/navermap"
@@ -21,6 +21,7 @@
         android:layout_height="35dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="38dp"
+        android:queryHint="검색어 예시) 행신 볼링장"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

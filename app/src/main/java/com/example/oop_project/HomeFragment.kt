@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import com.example.oop_project.View.ReserveMainActivity
 import com.example.oop_project.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -20,7 +21,7 @@ class HomeFragment : Fragment() {
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         binding.homeReservation.setOnClickListener{
-            val intent = Intent(requireContext(),reserveMain::class.java)
+            val intent = Intent(requireContext(),ReserveMainActivity::class.java)
             startActivity(intent)
         }
 

@@ -2,6 +2,7 @@ package com.example.oop_project.View
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ListView
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -16,7 +17,7 @@ class ReserveMainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityReserveMainBinding
     private lateinit var mListView: ListView
     private val viewModel: PlaceViewModel by viewModels { PlaceViewModelFactory(PlaceRepository()) }
-    private lateinit var searchViewAdaptor : SearchViewAdaptor
+    private lateinit var searchViewAdaptor: SearchViewAdaptor
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,8 +30,6 @@ class ReserveMainActivity : AppCompatActivity() {
         setupListeners()
 
 
-
-        viewModel.searchPlaces("구미 볼링장")
     }
 
     private fun setupObservers() {
@@ -62,6 +61,21 @@ class ReserveMainActivity : AppCompatActivity() {
             }
             startActivity(intent)
         }
-    }
+        binding.adresssearch.isSubmitButtonEnabled = true
+        binding.adresssearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
 
+                viewModel.searchPlaces(query)
+
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return true
+            }
+
+        })
+
+
+    }
 }

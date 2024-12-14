@@ -21,12 +21,16 @@ data class Reservation(
 data class Place(
     val title: String,
     val address: String,
-    val category: String
+    val category: String,
+    val mapx : Int,
+    val mapy : Int
 )
 data class SearchViewItem(
     var placeTitle: String = "",
     var placeAddress: String = "",
-    var placeCategory: String = ""
+    var placeCategory: String = "",
+    var placeMapX: Int = 0,
+    var placeMapY: Int = 0
 )
 
 data class SearchResponse(
@@ -43,6 +47,37 @@ class ReservationRepository {
                 onComplete(task.isSuccessful)
             }
         } ?: onComplete(false)
+    }
+
+    fun checkReservationOverlap(
+        newReservation: Reservation,
+        onResult: (Boolean) -> Unit
+    ) {
+        database.get().addOnSuccessListener { snapshot ->
+            val existingReservations = snapshot.children.mapNotNull { it.getValue(Reservation::class.java) }
+
+            val isOverlapping = existingReservations.any { existing ->
+                existing.place == newReservation.place &&
+                        existing.date == newReservation.date &&
+                        !(newReservation.endTime <= existing.startTime || newReservation.startTime >= existing.endTime)
+            }
+
+            onResult(isOverlapping)
+        }.addOnFailureListener { exception ->
+            Log.e("ReservationRepository", "Failed to check overlap: ${exception.message}")
+            onResult(false)
+        }
+    }
+
+    fun getReservationsForDate(place: String, date: String, onResult: (List<Reservation>) -> Unit) {
+        database.orderByChild("place").equalTo(place).get().addOnSuccessListener { snapshot ->
+            val reservations = snapshot.children.mapNotNull { it.getValue(Reservation::class.java) }
+                .filter { it.date == date }
+            onResult(reservations)
+        }.addOnFailureListener { exception ->
+            Log.e("ReservationRepository", "Failed to fetch reservations: ${exception.message}")
+            onResult(emptyList())
+        }
     }
 }
 
@@ -74,6 +109,7 @@ class PlaceRepository {
 
             val gson = Gson()
             val searchResponse = gson.fromJson(response, SearchResponse::class.java)
+            Log.d("SearchResult", "$searchResponse")
             return@withContext searchResponse.items // items 리스트 반환
         } catch (e: JsonSyntaxException) {
             Log.d("PlaceRepository", "JSON 파싱 오류: $e")
