@@ -27,7 +27,7 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="1051dp">
+            android:layout_height="551dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -149,6 +149,76 @@
                     android:id="@+id/recForumEPL"
                     android:layout_width="match_parent"
                     android:layout_height="118dp" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/commuTypeStar4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="20dp"
+                        android:src="@android:drawable/btn_star_big_on"
+                        app:layout_constraintEnd_toStartOf="@+id/commuTypeF1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/commuTypeF1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginEnd="264dp"
+                        android:layout_marginBottom="7dp"
+                        android:text="F1 인기글"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recForumF1"
+                    android:layout_width="match_parent"
+                    android:layout_height="117dp" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/commuTypeStar5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="20dp"
+                        android:src="@android:drawable/btn_star_big_on"
+                        app:layout_constraintEnd_toStartOf="@+id/commuTypeNBA"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/commuTypeNBA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="264dp"
+                        android:layout_marginBottom="7dp"
+                        android:text="NBA 인기글"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recForumNBA"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
 
             </LinearLayout>
         </ScrollView>
