@@ -1,48 +1,33 @@
 package com.example.oop_project.ViewModel
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.oop_project.Model.Reservation
 import com.example.oop_project.Model.ReservationRepository
+import com.google.firebase.Firebase
+import com.google.firebase.database.database
 
 class ReserveViewModel(private val repository: ReservationRepository) : ViewModel() {
+    private val _reservedTimes = MutableLiveData<List<String>>()
+    val reservedTimes: LiveData<List<String>> get() = _reservedTimes
 
-    private val _reservationStatus = MutableLiveData<Boolean>()
-    val reservationStatus: LiveData<Boolean> get() = _reservationStatus
-
-    private val _selectedDate = MutableLiveData<String>()
-    val selectedDate: LiveData<String> get() = _selectedDate
-
-    private val _isOverlapping = MutableLiveData<Boolean>()
-    val isOverlapping: LiveData<Boolean> get() = _isOverlapping
-
-    fun setSelectedDate(date: String) {
-        _selectedDate.value = date
+    fun saveReserve(context: Context, reservation: Reservation){
+        repository.saveReservation(context, reservation)
     }
 
-    fun reservePlace(place: String, date: String, startTime: String, endTime: String) {
-        if (date.isNotEmpty() && startTime.isNotEmpty() && endTime.isNotEmpty()) {
-            val reservation = Reservation(place, date, startTime, endTime)
-            repository.checkReservationOverlap(reservation) { overlap ->
-                if (!overlap) {
-                    // 중복되지 않으면 예약 진행
-                    repository.saveReservation(reservation) { isSuccess ->
-                        _reservationStatus.value = isSuccess
-                    }
-                } else {
-                    // 중복인 경우 예약 실패 상태 업데이트
-                    _reservationStatus.value = false
-                }
+    fun fetchReservedTimeSlots(place: String, date: String) {
+        repository.fetchReservedTimeSlots(
+            place,
+            date,
+            onSuccess = { reservedTimes ->
+                _reservedTimes.value = reservedTimes
+            },
+            onFailure = { exception ->
+                _reservedTimes.value = emptyList()
             }
-        } else {
-            _reservationStatus.value = false
-        }
+        )
     }
 
-    fun checkDuplication(place: String, date: String, startTime: String, endTime: String) {
-        val reservation = Reservation(place, date, startTime, endTime)
-        repository.checkReservationOverlap(reservation) { overlap ->
-            _isOverlapping.value = overlap
-        }
-    }
+
 }

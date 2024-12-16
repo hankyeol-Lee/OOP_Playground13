@@ -1,30 +1,32 @@
 package com.example.oop_project.ViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.oop_project.Model.Place
 import com.example.oop_project.Model.PlaceRepository
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
+import com.naver.maps.geometry.LatLng
 import kotlinx.coroutines.launch
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 
 class PlaceViewModel(private val repository: PlaceRepository) : ViewModel() {
 
-    private val _places = MutableStateFlow<List<Place>>(emptyList())
-    val places: StateFlow<List<Place>> get() = _places
+    private val _places = MutableLiveData<List<Place>>()
+    val places: LiveData<List<Place>> get() = _places
 
-    private val _error = MutableStateFlow<String?>(null)
-    val error: StateFlow<String?> get() = _error
+    private val _coordinates = MutableLiveData<LatLng?>()
+    val coordinates: LiveData<LatLng?> get() = _coordinates
 
-    fun searchPlaces(query: String) {
+    fun searchPlaces(searchWord: String) {
         viewModelScope.launch {
-            try {
-                val result = repository.searchPlaces(query)
-                _places.value = result
-            } catch (e: Exception) {
-                _error.value = "Failed to load data"
-            }
+            val results = repository.searchPlaces(searchWord)
+            _places.value = results
+        }
+    }
+
+    fun fetchCoordinatesByAddress(roadAddress: String) {
+        viewModelScope.launch {
+            val result = repository.getCoordinatesByAddress(roadAddress)
+            _coordinates.value = result
         }
     }
 }
