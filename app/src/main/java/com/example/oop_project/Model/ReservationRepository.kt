@@ -158,34 +158,4 @@ class PlaceRepository {
     }
 
     // Geocoding API 호출
-    suspend fun getCoordinatesByAddress(roadAddress: String): LatLng? = withContext(Dispatchers.IO) {
-        try {
-            val encodedAddress = URLEncoder.encode(roadAddress, "UTF-8")
-            val apiUrl = "https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query=$encodedAddress"
-            val url = URL(apiUrl)
-            val connection = url.openConnection() as HttpURLConnection
-            connection.requestMethod = "GET"
-            connection.setRequestProperty("X-NCP-APIGW-API-KEY-ID", clientId)
-            connection.setRequestProperty("X-NCP-APIGW-API-KEY", clientSecretKey)
-
-            val response = connection.inputStream.bufferedReader().readText()
-            connection.disconnect()
-
-            val json = JSONObject(response)
-            val addresses = json.getJSONArray("addresses")
-            if (addresses.length() > 0) {
-                val addressObject = addresses.getJSONObject(0)
-                return@withContext LatLng(
-                    addressObject.getString("y").toDouble(),
-                    addressObject.getString("x").toDouble()
-
-                )
-
-            }
-            return@withContext null
-        } catch (e: Exception) {
-            e.printStackTrace()
-            return@withContext null
-        }
-    }
 }
