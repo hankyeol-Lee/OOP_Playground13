@@ -35,7 +35,8 @@ class HomeFragment : Fragment() {
         setupRecyclerView()
         observeViewModel()
 
-        viewModel.loadGames()
+        val dates = listOf("2024-10-28", "2024-10-26", "2024-10-19", "2024-10-17")
+        viewModel.loadGames(dates)
 
 //        postDatas.apply {
 //            add(PopularPost("페이커 월즈 5연승 ㄷㄷ", "[10]"))

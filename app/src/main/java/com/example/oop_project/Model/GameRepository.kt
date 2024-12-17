@@ -12,24 +12,33 @@ data class Game(
 
 class GameRepository {
     private val db = FirebaseDatabase.getInstance()
-    private val gameReference = db.getReference("RecentGame/2024-10-28")
 
-    fun fetchGames(onSuccess: (List<Game>) -> Unit, onFailure: (Exception) -> Unit) {
-        gameReference.get()
-            .addOnSuccessListener { snapshot ->
-                if (snapshot.exists()) {
-                    val game = snapshot.getValue(Game::class.java)
-                    if (game != null) {
-                        onSuccess(listOf(game))
-                    } else {
-                        onFailure(Exception("No games found"))
+    fun fetchGames(dates: List<String>, onSuccess: (List<Game>) -> Unit, onFailure: (Exception) -> Unit) {
+        val games = mutableListOf<Game>()
+        var counter = 0
+
+        for (date in dates) {
+            val gameReference = db.getReference("RecentGame/$date")
+            gameReference.get()
+                .addOnSuccessListener { snapshot ->
+                    if (snapshot.exists()) {
+                        val game = snapshot.getValue(Game::class.java)
+                        if (game != null) {
+                            games.add(game)
+                        }
                     }
-                } else {
-                    onFailure(Exception("No games found"))
+                    counter++
+                    if (counter == dates.size) {
+                        onSuccess(games)
+                    }
                 }
-            }
-            .addOnFailureListener { exception ->
-                onFailure(exception)
-            }
+                .addOnFailureListener { exception ->
+                    counter++
+                    if (counter == dates.size) {
+                        onFailure(exception)
+                    }
+                }
+        }
     }
+
 }

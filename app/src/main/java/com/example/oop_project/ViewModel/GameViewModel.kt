@@ -15,8 +15,8 @@ class GameViewModel: ViewModel() {
     private val _error = MutableLiveData<String>()
     val error: LiveData<String> get() = _error
 
-    fun loadGames() {
-        repository.fetchGames(
+    fun loadGames(dates: List<String>) {
+        repository.fetchGames(dates,
             onSuccess = { games -> _games.value = games },
             onFailure = { exception -> _error.value = exception.message }
         )
