@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.oop_project.Model.Game
-import com.example.oop_project.R
 import com.example.oop_project.databinding.RecentGameItemBinding
 
 class GameRVAdapter(private var gameList: ArrayList<Game>): RecyclerView.Adapter<GameRVAdapter.ViewHolder>() {
@@ -35,17 +34,8 @@ class GameRVAdapter(private var gameList: ArrayList<Game>): RecyclerView.Adapter
             binding.team1Name.text = game.team1
             binding.team2Name.text = game.team2
             binding.score.text = game.score
-
-            // Glide로 이미지 로드
-            Glide.with(binding.root.context)
-                .load(game.team1Img)
-                .override(150, 150) // 너비와 높이를 픽셀 단위로 설정
-                .into(binding.team1Img)
-
-            Glide.with(binding.root.context)
-                .load(game.team2Img)
-                .override(150, 150)// team2Img를 이미지 URL로 로드
-                .into(binding.team2Img) // team2Img ImageView에 로드
+            Glide.with(binding.root.context).load(game.team1Img).override(150, 150).into(binding.team1Img)
+            Glide.with(binding.root.context).load(game.team2Img).override(150, 150).into(binding.team2Img)
         }
     }
 }

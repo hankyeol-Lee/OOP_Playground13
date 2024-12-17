@@ -19,20 +19,20 @@ class GameRepository {
 
         for (date in dates) {
             val gameReference = db.getReference("RecentGame/$date")
-            gameReference.get()
-                .addOnSuccessListener { snapshot ->
+            gameReference.get().addOnSuccessListener { snapshot ->
                     if (snapshot.exists()) {
                         val game = snapshot.getValue(Game::class.java)
-                        if (game != null) {
+
+                        if (game != null)
                             games.add(game)
-                        }
                     }
+
                     counter++
+
                     if (counter == dates.size) {
                         onSuccess(games)
                     }
-                }
-                .addOnFailureListener { exception ->
+                }.addOnFailureListener { exception ->
                     counter++
                     if (counter == dates.size) {
                         onFailure(exception)
