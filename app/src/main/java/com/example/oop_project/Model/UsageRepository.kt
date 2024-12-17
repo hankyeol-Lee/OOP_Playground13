@@ -1,6 +1,5 @@
-package com.example.oop_project
+package com.example.oop_project.Model
 
-import com.example.oop_project.Model.Game
 import com.google.firebase.database.FirebaseDatabase
 
 data class Usage(

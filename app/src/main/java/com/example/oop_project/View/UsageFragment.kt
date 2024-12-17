@@ -1,4 +1,4 @@
-package com.example.oop_project
+package com.example.oop_project.View
 
 import android.os.Bundle
 import android.util.Log
@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.oop_project.databinding.FragmentProfileBinding
+import com.example.oop_project.ViewModel.UsageViewModel
 import com.example.oop_project.databinding.FragmentUsageBinding
 
 class UsageFragment : Fragment() {

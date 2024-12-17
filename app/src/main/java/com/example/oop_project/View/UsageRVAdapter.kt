@@ -1,20 +1,20 @@
-package com.example.oop_project
+package com.example.oop_project.View
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.oop_project.databinding.RecentGameItemBinding
+import com.example.oop_project.Model.Usage
 import com.example.oop_project.databinding.UsageItemBinding
 
 class UsageRVAdapter(private val usageList: ArrayList<Usage>): RecyclerView.Adapter<UsageRVAdapter.ViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UsageRVAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding: UsageItemBinding = UsageItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
         return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: UsageRVAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(usageList[position])
     }
 

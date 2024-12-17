@@ -1,8 +1,10 @@
-package com.example.oop_project
+package com.example.oop_project.ViewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.oop_project.Model.Usage
+import com.example.oop_project.Model.UsageRepository
 
 class UsageViewModel: ViewModel() {
     private val repository = UsageRepository()

@@ -13,7 +13,6 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.oop_project.R
-import com.example.oop_project.UsageFragment
 import com.example.oop_project.ViewModel.GameViewModel
 import com.example.oop_project.databinding.FragmentHomeBinding
 
