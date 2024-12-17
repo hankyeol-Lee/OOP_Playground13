@@ -2,14 +2,13 @@ package com.example.oop_project
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.oop_project.databinding.ListPostsBinding
 
-class Community_PostAdapter(
-    private var Postdata: Array<Community_Post>,
+class CommunityPostAdapter(
+    private var Postdata: Array<CommunityPost>,
     private val listener: OnPostClickListener
-) : RecyclerView.Adapter<Community_PostAdapter.Holder>() {
+) : RecyclerView.Adapter<CommunityPostAdapter.Holder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val binding = ListPostsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -23,7 +22,7 @@ class Community_PostAdapter(
     }
 
     // 효율적인 데이터 업데이트를 위한 메서드
-    fun updateData(newData:List<Community_Post>) {
+    fun updateData(newData:List<CommunityPost>) {
         Postdata = newData.toTypedArray()
         notifyDataSetChanged() // 리스트의
     }
@@ -33,7 +32,7 @@ class Community_PostAdapter(
         private val listener: OnPostClickListener
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(communityPost: Community_Post) {
+        fun bind(communityPost: CommunityPost) {
             binding.txtPost.text = communityPost.PostTitle
             binding.txtAuthor.text = communityPost.PostAuthor
             //binding.PostType.text = communityPost.PostType

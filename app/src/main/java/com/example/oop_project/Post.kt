@@ -11,11 +11,10 @@ data class Post(
     val likes: Int = 0,
     val dislikes: Int = 0,
     val commentnum : Int = 0,
-    val comment: Map<String,Comment> = emptyMap() // K, V가 있는 map으로 댓글 정의
+    val comment: MutableMap<String,postComment> = mutableMapOf() // K, V가 있는 map으로 댓글 정의, 변경 가능하도록. mutablemap 으로 변경.
 )
 
-data class Comment( // 확장 가능하도록 댓글 기능 추가..?
+data class postComment( // 확장 가능하도록 댓글 기능 추가
     val author :String = "",
     val content:String = "",
-    val timePassed : Long = 0L
 )

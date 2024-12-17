@@ -6,11 +6,17 @@ import com.example.oop_project.Post // 이거 MVVM 폴더로 구분할때 변경
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import android.util.Log
 
 class PostRepository {
     private val database = FirebaseDatabase.getInstance()
     private val postRef = database.getReference("posts") // posts라는 노드를 참조.
 
+    init {
+        //firebase 연결 디버깅용 코드
+        //Log.d("database","${database}")
+        //Log.d("postRef","$postRef")
+    }
     fun addPost(post:Post) {
         val key = postRef.push().key // postRef에 있는 key를 자동으로 생성.
         if (key == null) { //early return

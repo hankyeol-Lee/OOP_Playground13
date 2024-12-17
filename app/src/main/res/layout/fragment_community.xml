@@ -55,7 +55,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="15dp"
                 android:fontFamily="@font/pretendardextrabold"
-                android:text="F1 인기글"
+                android:text="KBO 인기글"
                 android:textSize="34sp" />
 
             <androidx.recyclerview.widget.RecyclerView

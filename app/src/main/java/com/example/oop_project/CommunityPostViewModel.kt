@@ -23,7 +23,10 @@ class CommunityPostViewModel :ViewModel() {
             image = "https://firebasestorage.googleapis.com/v0/b/oop-playground-605da.firebasestorage.app/o/kboimage.png?alt=media&token=93fd7956-e8ff-4720-981c-495664d3beac",
             likes = 0,
             dislikes = 0,
-            comment = emptyMap()
+            comment = mutableMapOf(
+                "comment_1" to postComment(author = "익명1", content = "당신 LG 팬이지"),
+                "comment_2" to postComment(author = "익명2", content = "부두술 걸지 마세요")
+            )
         ),
         Post(
             category = "LCK",
@@ -32,7 +35,11 @@ class CommunityPostViewModel :ViewModel() {
             content = "T1의 전략과 페이커의 역할",
             image = "https://firebasestorage.googleapis.com/v0/b/oop-playground-605da.firebasestorage.app/o/t1image.webp?alt=media&token=fc63a65e-f7e4-4a47-b1c2-5f655c366092",
             likes = 10,
-            dislikes = 1
+            dislikes = 1,
+            comment = mutableMapOf(
+                "comment_1" to postComment(author = "익명1", content = "페이커 대단해요."),
+                "comment_2" to postComment(author = "T1 Fan", content = "T1 우승 가즈아!")
+            )
         ),
         Post(
             category = "EPL",
