@@ -1,4 +1,4 @@
-package com.example.oop_project
+package com.example.oop_project.View
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,12 +9,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.oop_project.Model.CommunityPost
 import com.example.oop_project.databinding.FragmentCommunityBinding
 import com.example.oop_project.Model.KeywordItem
-import com.example.oop_project.View.CommunityKeywordAdapter
+import com.example.oop_project.R
+import com.example.oop_project.ViewModel.CommunityPostViewModel
+import com.google.gson.Gson
 
 interface OnPostClickListener {
-    fun onPostClick(post: Community_Post) // 클릭 이벤트를 분리하기 위한 인터페이스 지정.
+    fun onPostClick(post: CommunityPost) // 클릭 이벤트를 분리하기 위한 인터페이스 지정.
 }
 
 class CommunityFragment : Fragment(), OnPostClickListener {
@@ -23,7 +26,7 @@ class CommunityFragment : Fragment(), OnPostClickListener {
     private lateinit var binding: FragmentCommunityBinding
 
     // 인터페이스의 추상 메소드 구체화.
-    override fun onPostClick(post: Community_Post) {
+    override fun onPostClick(post: CommunityPost) {
         val selectedPost = viewModel.posts.value?.find { it.title == post.PostTitle } ?: return // nullcheck
 
         val postFragment = PostFragment()
@@ -32,6 +35,9 @@ class CommunityFragment : Fragment(), OnPostClickListener {
             putString("postTitle", selectedPost.title) // 제목 전달. id값을 string으로 찾나보네?
             putString("postData", selectedPost.content) // 내용 전달
             putString("postAuthor",selectedPost.author) // 글쓴이 전달
+            putString("PostImage",selectedPost.image) // 이미지 URL 전달
+            putString("postComments", Gson().toJson(selectedPost.comment)) // mutablemap은 못넘김. 그래서 직렬화 구조? 인 Gson으로 변경.(구글링)
+            putString("authorImage",selectedPost.authorImage)
         }
         postFragment.arguments = bundle // fragment에 데이터 넘겨줌.
         parentFragmentManager.beginTransaction() // fragment 전환
@@ -48,13 +54,11 @@ class CommunityFragment : Fragment(), OnPostClickListener {
         binding = FragmentCommunityBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this).get(CommunityPostViewModel::class.java) // viewModel을 찾고, 없으면 생성
 
+        //json 파일을 쉽게 사용하려고 임시로 미리 추가
+        //viewModel.addPost()
 
         // 각각의 recyclerview와 카테고리를 연결
         setupRecyclerView(binding.recForumKBO, "KBO")
-        //setupRecyclerView(binding.recForumLCK, "LCK")
-        //setupRecyclerView(binding.recForumEPL, "EPL")
-        //setupRecyclerView(binding.recForumF1, "F1")
-        //setupRecyclerView(binding.recForumNBA, "NBA")
 
         viewModel.loadPosts()
         setupKeywordsRecyclerView()
@@ -64,7 +68,7 @@ class CommunityFragment : Fragment(), OnPostClickListener {
 
     }
     private fun setupKeywordsRecyclerView() {
-        // 임시데이터
+
         val keywords = listOf(
             KeywordItem("이적시장",30),
             KeywordItem("2025 KBO",29),
@@ -83,7 +87,7 @@ class CommunityFragment : Fragment(), OnPostClickListener {
     }
     //recyclerview 한꺼번에 관리하는 함수 만듦.
     private fun setupRecyclerView(recyclerView: RecyclerView, category: String) {
-        val adapter = Community_PostAdapter(emptyArray(), this)
+        val adapter = CommunityPostAdapter(emptyArray(), this)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapter
 
@@ -95,7 +99,7 @@ class CommunityFragment : Fragment(), OnPostClickListener {
         viewModel.posts.observe(viewLifecycleOwner) { posts ->
             val filteredPosts = posts.filter { it.category == category }
             adapter.updateData(filteredPosts.map { post ->
-                Community_Post(post.category, post.title,post.author)
+                CommunityPost(post.category, post.title,post.author)
             })
         }
     }
