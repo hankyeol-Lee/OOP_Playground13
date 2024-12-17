@@ -1,4 +1,4 @@
-package com.example.oop_project
+package com.example.oop_project.View
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,9 +9,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.oop_project.Model.CommunityPost
 import com.example.oop_project.databinding.FragmentCommunityBinding
 import com.example.oop_project.Model.KeywordItem
-import com.example.oop_project.View.CommunityKeywordAdapter
+import com.example.oop_project.R
+import com.example.oop_project.ViewModel.CommunityPostViewModel
 import com.google.gson.Gson
 
 interface OnPostClickListener {

@@ -1,12 +1,10 @@
 package repository
 
-import android.renderscript.Sampler.Value
 import com.google.firebase.database.FirebaseDatabase
-import com.example.oop_project.Post // 이거 MVVM 폴더로 구분할때 변경해주어야 함. Post가 있는쪽으로!
+import com.example.oop_project.Model.Post // 이거 MVVM 폴더로 구분할때 변경해주어야 함. Post가 있는쪽으로!
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-import android.util.Log
 
 class PostRepository {
     private val database = FirebaseDatabase.getInstance()
@@ -17,7 +15,7 @@ class PostRepository {
         //Log.d("database","${database}")
         //Log.d("postRef","$postRef")
     }
-    fun addPost(post:Post) {
+    fun addPost(post: Post) {
         val key = postRef.push().key // postRef에 있는 key를 자동으로 생성.
         if (key == null) { //early return
             return

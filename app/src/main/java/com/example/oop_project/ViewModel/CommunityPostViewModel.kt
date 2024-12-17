@@ -1,10 +1,12 @@
-package com.example.oop_project
+package com.example.oop_project.ViewModel
 
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import repository.PostRepository
 import androidx.lifecycle.ViewModel
+import com.example.oop_project.Model.Post
+import com.example.oop_project.Model.postComment
 
 //ViewModel을 상속받는 클래스 CommunityPostViewModel
 class CommunityPostViewModel :ViewModel() {

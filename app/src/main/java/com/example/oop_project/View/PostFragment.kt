@@ -1,4 +1,4 @@
-package com.example.oop_project
+package com.example.oop_project.View
 
 import android.os.Bundle
 import android.util.Log
@@ -9,10 +9,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.oop_project.databinding.FragmentPostfragmentBinding
 import com.bumptech.glide.Glide
+import com.example.oop_project.Model.postComment
 import com.google.gson.Gson
-import com.google.gson.JsonElement
-import com.google.gson.JsonObject
-import com.google.gson.JsonParser
 import com.google.gson.reflect.TypeToken
 
 class PostFragment : Fragment() {

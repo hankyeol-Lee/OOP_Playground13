@@ -5,6 +5,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.oop_project.View.CommunityFragment
 import com.example.oop_project.View.HomeFragment
 import com.example.oop_project.databinding.ActivityMainBinding
 

@@ -1,8 +1,9 @@
-package com.example.oop_project
+package com.example.oop_project.View
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.oop_project.Model.postComment
 import com.example.oop_project.databinding.CommunitypostCommentBinding
 
 class PostFragmentAdapter(
