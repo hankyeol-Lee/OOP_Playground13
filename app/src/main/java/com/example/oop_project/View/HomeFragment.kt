@@ -2,6 +2,8 @@ package com.example.oop_project.View
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -23,6 +25,18 @@ class HomeFragment : Fragment() {
     private lateinit var viewModel: GameViewModel
     private lateinit var gameRVAdapter: GameRVAdapter
 
+    private val handler = Handler(Looper.getMainLooper())
+    private var currentPosition = 0
+
+    private val autoScrollRunnable = object : Runnable {
+        override fun run() {
+            if (gameRVAdapter.itemCount > 0) {
+                currentPosition = (currentPosition + 1) % gameRVAdapter.itemCount
+                binding.homeRecentGameRv.smoothScrollToPosition(currentPosition)
+                handler.postDelayed(this, 3000) // 3초마다 스크롤
+            }
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -89,11 +103,22 @@ class HomeFragment : Fragment() {
             } else {
                 Log.d("HomeFragment", "Games loaded: ${games.size}")
                 gameRVAdapter.updateData(games)
+                startAutoScroll()
             }
         }
 
         viewModel.error.observe(viewLifecycleOwner) { error ->
             Log.e("HomeFragment", "Error loading games: $error")
         }
+    }
+
+    private fun startAutoScroll() {
+        handler.removeCallbacks(autoScrollRunnable) // 기존 콜백 제거
+        handler.postDelayed(autoScrollRunnable, 3000)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        handler.removeCallbacks(autoScrollRunnable) // 메모리 누수 방지
     }
 }
