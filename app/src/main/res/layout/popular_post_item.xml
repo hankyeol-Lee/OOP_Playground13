@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/post_name"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="티원 월즈 다섯 번째 우승 ㄷㄷ"
@@ -14,12 +14,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/post_comment"
+        android:id="@+id/category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="[10]"
-        app:layout_constraintStart_toEndOf="@+id/post_name"
+        app:layout_constraintStart_toEndOf="@+id/title"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
