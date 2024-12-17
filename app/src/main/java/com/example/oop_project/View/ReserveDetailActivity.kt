@@ -11,15 +11,12 @@ import com.example.oop_project.Model.Reservation
 import com.example.oop_project.Model.ReservationRepository
 import com.example.oop_project.R
 import com.example.oop_project.ViewModel.ReserveViewModel
-import com.example.oop_project.ViewModel.ReserveViewModelFactory
 import com.example.oop_project.databinding.ActivityReserveDetailBinding
 import java.util.Calendar
 
 class ReserveDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityReserveDetailBinding
-    private val viewModel: ReserveViewModel by viewModels {
-        ReserveViewModelFactory(ReservationRepository())
-    }
+    private val viewModel: ReserveViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +25,6 @@ class ReserveDetailActivity : AppCompatActivity() {
 
         val category:String = intent.getStringExtra("category") ?: ""
         val title : String = intent.getStringExtra("title") ?:""
-        val address : String = intent.getStringExtra("address") ?:""
         //HTML 태그 뜨는 오류 수정
         binding.Title.text =
             Html.fromHtml(title, Html.FROM_HTML_MODE_LEGACY).toString()

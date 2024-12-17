@@ -5,10 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.oop_project.Model.Reservation
 import com.example.oop_project.Model.ReservationRepository
-import com.google.firebase.Firebase
-import com.google.firebase.database.database
 
-class ReserveViewModel(private val repository: ReservationRepository) : ViewModel() {
+
+class ReserveViewModel() : ViewModel() {
+    private val repository: ReservationRepository = ReservationRepository()
     private val _reservedTimes = MutableLiveData<List<String>>()
     val reservedTimes: LiveData<List<String>> get() = _reservedTimes
 
@@ -28,6 +28,7 @@ class ReserveViewModel(private val repository: ReservationRepository) : ViewMode
             }
         )
     }
+
 
 
 }
