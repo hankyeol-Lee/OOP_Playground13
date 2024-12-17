@@ -32,6 +32,7 @@ class CommunityFragment : Fragment(), OnPostClickListener {
             putString("postTitle", selectedPost.title) // 제목 전달. id값을 string으로 찾나보네?
             putString("postData", selectedPost.content) // 내용 전달
             putString("postAuthor",selectedPost.author) // 글쓴이 전달
+            putString("PostImage",selectedPost.image) // 이미지 URL 전달
         }
         postFragment.arguments = bundle // fragment에 데이터 넘겨줌.
         parentFragmentManager.beginTransaction() // fragment 전환

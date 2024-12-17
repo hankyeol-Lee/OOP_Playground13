@@ -20,7 +20,7 @@ class CommunityPostViewModel :ViewModel() {
             title = "삼성은 어떻게 강팀이 되었는가",
             author = "야빠어디가",
             content = "ㅈㄱㄴ",
-            image = "https://www.instagram.com/samsunglions_baseballclub/p/DBTFl4MvBlf/",
+            image = "https://firebasestorage.googleapis.com/v0/b/oop-playground-605da.firebasestorage.app/o/kboimage.png?alt=media&token=93fd7956-e8ff-4720-981c-495664d3beac",
             likes = 0,
             dislikes = 0,
             comment = emptyMap()
@@ -30,7 +30,7 @@ class CommunityPostViewModel :ViewModel() {
             title = "T1, 페이커의 놀라운 경기력",
             author = "eSportsFan",
             content = "T1의 전략과 페이커의 역할",
-            image = "https://www.example.com/image2.jpg",
+            image = "https://firebasestorage.googleapis.com/v0/b/oop-playground-605da.firebasestorage.app/o/t1image.webp?alt=media&token=fc63a65e-f7e4-4a47-b1c2-5f655c366092",
             likes = 10,
             dislikes = 1
         ),
@@ -39,7 +39,7 @@ class CommunityPostViewModel :ViewModel() {
             title = "리버풀의 새로운 시즌 준비",
             author = "FootballLover",
             content = "리버풀의 새로운 시즌을 위한 전술",
-            image = "https://www.example.com/image3.jpg",
+            image = "https://firebasestorage.googleapis.com/v0/b/oop-playground-605da.firebasestorage.app/o/t1image.webp?alt=media&token=fc63a65e-f7e4-4a47-b1c2-5f655c366092",
             likes = 15,
             dislikes = 2
         )

@@ -9,7 +9,7 @@ import com.google.firebase.database.ValueEventListener
 
 class PostRepository {
     private val database = FirebaseDatabase.getInstance()
-    private val postRef = database.getReference("posts") // post라는 노드를 참조.
+    private val postRef = database.getReference("posts") // posts라는 노드를 참조.
 
     fun addPost(post:Post) {
         val key = postRef.push().key // postRef에 있는 key를 자동으로 생성.
