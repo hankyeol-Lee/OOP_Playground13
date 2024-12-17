@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.oop_project.databinding.FragmentCommunityBinding
+import com.example.oop_project.Model.KeywordItem
+import com.example.oop_project.View.CommunityKeywordAdapter
 
 interface OnPostClickListener {
     fun onPostClick(post: Community_Post) // 클릭 이벤트를 분리하기 위한 인터페이스 지정.
@@ -46,15 +48,38 @@ class CommunityFragment : Fragment(), OnPostClickListener {
         binding = FragmentCommunityBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this).get(CommunityPostViewModel::class.java) // viewModel을 찾고, 없으면 생성
 
+
         // 각각의 recyclerview와 카테고리를 연결
         setupRecyclerView(binding.recForumKBO, "KBO")
-        setupRecyclerView(binding.recForumLCK, "LCK")
-        setupRecyclerView(binding.recForumEPL, "EPL")
-        setupRecyclerView(binding.recForumF1, "F1")
-        setupRecyclerView(binding.recForumNBA, "NBA")
+        //setupRecyclerView(binding.recForumLCK, "LCK")
+        //setupRecyclerView(binding.recForumEPL, "EPL")
+        //setupRecyclerView(binding.recForumF1, "F1")
+        //setupRecyclerView(binding.recForumNBA, "NBA")
 
         viewModel.loadPosts()
+        setupKeywordsRecyclerView()
         return binding.root
+    }
+    private fun setupPosts() {
+
+    }
+    private fun setupKeywordsRecyclerView() {
+        // 임시데이터
+        val keywords = listOf(
+            KeywordItem("이적시장",30),
+            KeywordItem("2025 KBO",29),
+            KeywordItem("레드불 T1",18),
+            KeywordItem(" 오늘자 경기",19),
+            KeywordItem("막스 베르스타펜",49),
+            KeywordItem("사우샘프턴 대 토트넘", 29),
+            KeywordItem("이재성 이주의 선수", 19),
+            KeywordItem("맨유", 10),
+            )
+        // keyworditem의 number 내림차순으로 정렬.
+        // RecyclerView와 Adapter 초기화
+        val adapter = CommunityKeywordAdapter(keywords)
+        binding.reckeywordlist.layoutManager = LinearLayoutManager(requireContext())
+        binding.reckeywordlist.adapter = adapter
     }
     //recyclerview 한꺼번에 관리하는 함수 만듦.
     private fun setupRecyclerView(recyclerView: RecyclerView, category: String) {
@@ -70,7 +95,7 @@ class CommunityFragment : Fragment(), OnPostClickListener {
         viewModel.posts.observe(viewLifecycleOwner) { posts ->
             val filteredPosts = posts.filter { it.category == category }
             adapter.updateData(filteredPosts.map { post ->
-                Community_Post(post.category, post.title)
+                Community_Post(post.category, post.title,post.author)
             })
         }
     }

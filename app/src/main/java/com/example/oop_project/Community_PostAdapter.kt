@@ -35,7 +35,8 @@ class Community_PostAdapter(
 
         fun bind(communityPost: Community_Post) {
             binding.txtPost.text = communityPost.PostTitle
-            binding.PostType.text = communityPost.PostType
+            binding.txtAuthor.text = communityPost.PostAuthor
+            //binding.PostType.text = communityPost.PostType
             binding.root.setOnClickListener {
                 listener.onPostClick(communityPost)
             }

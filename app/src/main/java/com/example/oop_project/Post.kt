@@ -10,6 +10,7 @@ data class Post(
     val image: String? = null,
     val likes: Int = 0,
     val dislikes: Int = 0,
+    val commentnum : Int = 0,
     val comment: Map<String,Comment> = emptyMap() // K, V가 있는 map으로 댓글 정의
 )
 
