@@ -22,10 +22,10 @@ class CommunityPostAdapter(
         holder.bind(Postdata[position])
     }
 
-    // 효율적인 데이터 업데이트를 위한 메서드
+    // 데이터 변경을 위한 메소드
     fun updateData(newData:List<CommunityPost>) {
         Postdata = newData.toTypedArray()
-        notifyDataSetChanged() // 리스트의
+        notifyDataSetChanged() // 리스트의 모든 item을 다시 그리고 재배치.
     }
 
     class Holder(

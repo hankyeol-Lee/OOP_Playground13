@@ -22,12 +22,13 @@ class PostFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
         binding = FragmentPostfragmentBinding.inflate(inflater, container, false)
 
         val title = arguments?.getString("postTitle")?: "기본 제목" // nullcheck
         val content = arguments?.getString("postData")?: "기본 내용" // nullcheck
         val author = arguments?.getString("postAuthor")?: "ㅇㅇ" // nullcheck
+        val authorImage = arguments?.getString("authorImage")?: "localhost"//
         val image = arguments?.getString("PostImage")?:
         "https://firebasestorage.googleapis.com/v0/b/oop-playground-605da.firebasestorage.app/o/t1image.webp?alt=media&token=fc63a65e-f7e4-4a47-b1c2-5f655c366092";
         val commentsJson:String = arguments?.getString("postComments")?: "" //
@@ -39,7 +40,8 @@ class PostFragment : Fragment() {
                 object : TypeToken<MutableMap<String, postComment>>() {}.type
             )
 
-        Log.v("이미지에 들어간값","${image}")
+        //Log.v("이미지에 들어간값","${image}")
+
         binding.postTitle.text = title // postTitle id textView에 읽어온 값 지정
         binding.postData.text = content
         binding.postAuthor.text = author
@@ -47,9 +49,10 @@ class PostFragment : Fragment() {
         Glide.with(this)
             .load(image)
             .into(binding.PostImage)
-
+        Glide.with(this)
+            .load(authorImage)
+            .into(binding.postAuthorImage)
         setupRecyclerView()
-
 
         updateComments(comments.values.toList()) // 하나씩
         return binding.root

@@ -25,14 +25,24 @@
                     android:id="@+id/postAuthor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="28dp"
-                    android:layout_marginEnd="325dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="300dp"
                     android:text="글쓴이"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.254"
+                    app:layout_constraintHorizontal_bias="0.854"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/postTitle" />
+
+                <ImageView
+                    android:id="@+id/postAuthorImage"
+                    android:layout_width="48dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toEndOf="@+id/postAuthor"
+                    app:layout_constraintTop_toBottomOf="@+id/postTitle"
+                    tools:src="@tools:sample/avatars" />
 
                 <TextView
                     android:id="@+id/postTitle"
@@ -42,7 +52,7 @@
                     android:fontFamily="sans-serif-black"
                     android:gravity="center_horizontal|center_vertical"
                     android:text="글 제목"
-                    android:textSize="34sp"
+                    android:textSize="28sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
