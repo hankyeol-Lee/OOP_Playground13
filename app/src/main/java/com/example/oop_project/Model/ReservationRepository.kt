@@ -60,7 +60,7 @@ class ReservationRepository {
         )
 
         // 고유한 키 생성 후 데이터 저장
-        val newReservationRef = reservationRef.push() // Firebase에서 고유 키 생성
+        val newReservationRef = reservationRef.push()
         newReservationRef.setValue(reservationData)
             .addOnSuccessListener {
                 Toast.makeText(context,"예약이 완료되었습니다!",Toast.LENGTH_LONG ).show()
@@ -157,5 +157,4 @@ class PlaceRepository {
         }
     }
 
-    // Geocoding API 호출
 }
