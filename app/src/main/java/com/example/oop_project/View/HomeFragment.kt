@@ -2,8 +2,6 @@ package com.example.oop_project.View
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +14,12 @@ import com.example.oop_project.ViewModel.PopularPostViewModel
 import com.example.oop_project.R
 import com.example.oop_project.ViewModel.GameViewModel
 import com.example.oop_project.databinding.FragmentHomeBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
 
@@ -26,19 +30,8 @@ class HomeFragment : Fragment() {
     private lateinit var viewModel2: PopularPostViewModel
     private lateinit var popularPostRVAdapter: PopularPostRVAdapter
 
-    private val handler = Handler(Looper.getMainLooper()) // Handler 생성: UI 스레드에서 작업 수행
-    private var currentPosition = 0 // 현재 위치 변수
-
-    // 자동 스크롤을 위한 Runnable 객체
-    private val autoScrollRunnable = object : Runnable {
-        override fun run() {
-            if (gameRVAdapter.itemCount > 0) {
-                currentPosition = (currentPosition + 1) % gameRVAdapter.itemCount // 다음 아이템으로 이동
-                binding.homeRecentGameRv.smoothScrollToPosition(currentPosition) // 스크롤 이동
-                handler.postDelayed(this, 3000) // 3초 후에 다시 실행
-            }
-        }
-    }
+    // CoroutineScope 정의
+    private val coroutineScope = CoroutineScope(Dispatchers.Main)
 
     // Fragment의 View가 생성될 때 호출되는 함수
     override fun onCreateView(
@@ -55,6 +48,9 @@ class HomeFragment : Fragment() {
         // 날짜 리스트로 게임 데이터 로드
         val dates = listOf("2024-10-28", "2024-10-26", "2024-10-19", "2024-10-17")
         viewModel.loadGames(dates)
+
+        // 자동 스크롤 설정 (코루틴 사용)
+        startAutoScroll()
 
         viewModel2 = ViewModelProvider(this).get(PopularPostViewModel::class.java)
 
@@ -150,15 +146,27 @@ class HomeFragment : Fragment() {
         }
     }
 
-    // 자동 스크롤을 시작하는 함수
+    // 코루틴을 사용한 자동 스크롤 함수
     private fun startAutoScroll() {
-        handler.removeCallbacks(autoScrollRunnable) // 기존 콜백 제거
-        handler.postDelayed(autoScrollRunnable, 3000) // 3초 후에 자동 스크롤 시작
+        // 주기적으로 스크롤하는 작업을 시작
+        coroutineScope.launch {
+            while (isActive) {
+                delay(4000) // 일정 시간마다 자동 스크롤
+                val currentPosition = (binding.homeRecentGameRv.layoutManager as LinearLayoutManager)
+                    .findFirstVisibleItemPosition()
+                val nextPosition = currentPosition + 1
+                if (nextPosition < gameRVAdapter.itemCount) {
+                    binding.homeRecentGameRv.smoothScrollToPosition(nextPosition)
+                } else {
+                    binding.homeRecentGameRv.smoothScrollToPosition(0) // 맨 처음으로 돌아가면 다시 시작
+                }
+            }
+        }
     }
 
-    // View가 파괴될 때 호출되어 메모리 누수를 방지하는 함수
+    // Fragment가 파괴되기 전에 코루틴을 취소하는 코드 추가 (메모리 누수 방지)
     override fun onDestroyView() {
         super.onDestroyView()
-        handler.removeCallbacks(autoScrollRunnable) // 메모리 누수 방지
+        coroutineScope.cancel() // 코루틴 취소
     }
 }
