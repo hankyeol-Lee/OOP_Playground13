@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/usage_background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/usage_background_green" />
+
+    <ImageView
+        android:id="@+id/usage_face_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/usage_background"
+        app:layout_constraintEnd_toEndOf="@+id/usage_background"
+        app:layout_constraintTop_toTopOf="@+id/usage_background"
+        app:srcCompat="@drawable/usage_smile" />
+
+    <ImageView
+        android:id="@+id/usage_place_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/usage_background"
+        app:layout_constraintStart_toStartOf="@+id/usage_background"
+        app:layout_constraintTop_toTopOf="@+id/usage_background"
+        app:srcCompat="@drawable/usage_place_img_1" />
+
+    <TextView
+        android:id="@+id/usage_place_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:text="낙동강체육공원축구장"
+        android:textSize="15dp"
+        android:textStyle="bold"
+
+        app:layout_constraintStart_toEndOf="@+id/usage_place_img"
+        app:layout_constraintTop_toTopOf="@+id/usage_background" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="이용시간:"
+        app:layout_constraintStart_toEndOf="@+id/usage_place_img"
+        app:layout_constraintTop_toBottomOf="@+id/usage_place_name"
+
+        android:textSize="10dp"/>
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="수용인원:"
+        app:layout_constraintStart_toEndOf="@+id/usage_place_img"
+        app:layout_constraintTop_toBottomOf="@+id/textView9"
+
+        android:textSize="10dp"/>
+
+    <TextView
+        android:id="@+id/usage_place_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="09:00 ~ 22:00"
+        app:layout_constraintStart_toEndOf="@+id/textView9"
+        app:layout_constraintTop_toBottomOf="@+id/usage_place_name"
+
+        android:textSize="10dp"/>
+
+    <TextView
+        android:id="@+id/usage_place_capacity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="최대 30명"
+        app:layout_constraintStart_toEndOf="@+id/textView10"
+        app:layout_constraintTop_toTopOf="@+id/textView10"
+
+        android:textSize="10dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

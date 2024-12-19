@@ -7,6 +7,10 @@
     <font
         android:fontStyle="normal"
         android:fontWeight="400"
+        android:font="@font/pretendardblack"/>
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
         android:font="@font/pretendardextrabold"/>
     <font
         android:fontStyle="normal"
@@ -36,5 +40,20 @@
         android:fontStyle="normal"
         android:fontWeight="400"
         android:font="@font/pretendardthin"/>
-
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/nexonlv1_gothic_bold"/>
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/nexonlv1_gothic_light"/>
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/nexonlv2_gothic"/>
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/nexonlv2_gothic_medium"/>
 </font-family>
